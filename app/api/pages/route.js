@@ -1,12 +1,24 @@
 import { NextResponse } from 'next/server';
 import { createPage } from '@/lib/pages';
 
+// const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = "mongodb+srv://bijaylife2001:bijay%40mongodb2025@cluster0.gty5vld.mongodb.net/test";
+// console.log('MONGODB_URI:', MONGODB_URI);
+import mongoose from 'mongoose';
+
 export const dynamic = 'force-dynamic'; // Ensure dynamic routing
+
+async function dbConnect() {
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(MONGODB_URI);
+  }
+}
 
 export async function POST(request) {
   try {
+    await dbConnect();
     const { slug, components } = await request.json();
-    
+
     // Validate input
     if (!slug || typeof slug !== 'string') {
       return NextResponse.json(
@@ -22,14 +34,13 @@ export async function POST(request) {
       );
     }
 
-    const result = createPage(slug, components);
-    // window.open(`/${slug}`, '_blank');
+    const result = await createPage(slug, components);
     return NextResponse.json({
       ...result,
       url: `/${slug}`,
       message: "Page created successfully. Visit the URL to view your new page."
     });
-    
+
   } catch (error) {
     console.error('Error creating page:', error);
     return NextResponse.json(
@@ -38,54 +49,3 @@ export async function POST(request) {
     );
   }
 }
-
-// import { NextResponse } from 'next/server';
-// import { createPage } from '@/lib/pages';
-
-// export const dynamic = 'force-dynamic';
-
-// export async function POST(request) {
-//   try {
-//     const { slug, components } = await request.json();
-    
-//     // Validate input
-//     if (!slug || typeof slug !== 'string') {
-//       return NextResponse.json(
-//         { error: 'Invalid or missing slug' },
-//         { status: 400 }
-//       );
-//     }
-
-//     const result = createPage(slug, components);
-    
-//     // Create HTML response with JavaScript to open new tab
-//     const html = `
-//       <!DOCTYPE html>
-//       <html>
-//         <head>
-//           <title>Page Created</title>
-//           <script>
-//             window.open('/${slug}', '_blank');
-//             window.close();
-//           </script>
-//         </head>
-//         <body>
-//           <p>Page created successfully. If not redirected automatically, <a href="/${slug}" target="_blank">click here</a>.</p>
-//         </body>
-//       </html>
-//     `;
-
-//     return new NextResponse(html, {
-//       status: 200,
-//       headers: {
-//         'Content-Type': 'text/html',
-//       },
-//     });
-    
-//   } catch (error) {
-//     return NextResponse.json(
-//       { error: 'Internal server error' },
-//       { status: 500 }
-//     );
-//   }
-// }

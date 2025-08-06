@@ -139,6 +139,31 @@ This app is ready to deploy on [Vercel](https://vercel.com/), [Render](https://r
 
 ---
 
+## 🗄️ MongoDB Setup (Required for Production)
+
+This app now uses MongoDB for persistent storage of dynamic pages. You must provide a MongoDB connection string via the `MONGODB_URI` environment variable.
+
+### 1. Create a MongoDB Database
+- Use [MongoDB Atlas](https://www.mongodb.com/atlas) for a free cloud database, or run MongoDB locally.
+
+### 2. Set the Environment Variable
+- In your deployment platform (Vercel, Render, etc.), add:
+
+```
+MONGODB_URI=your-mongodb-connection-string
+```
+
+- For local development, create a `.env.local` file in the project root:
+
+```
+MONGODB_URI=your-mongodb-connection-string
+```
+
+### 3. Deploy
+- Make sure the environment variable is set before deploying.
+
+---
+
 ## 📄 License
 
 MIT

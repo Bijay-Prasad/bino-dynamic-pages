@@ -6,7 +6,8 @@ import { TypingAnimation } from "@/components/magicui/typing-animation";
 import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 import { SparklesText } from "@/components/magicui/sparkles-text";
 
-export default function Home() {
+
+export default async function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-100 flex flex-col items-center justify-center py-20 px-4">
       <AnimatedSection className="w-full max-w-2xl mx-auto text-center mb-12">

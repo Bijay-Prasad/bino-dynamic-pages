@@ -6,25 +6,25 @@ import StatsBox from '@/components/StatsBox';
 import CTA from '@/components/CTA';
 import AnimatedMain from '@/components/AnimatedMain';
 import NotFound from '../not-found';
+import mongoose from 'mongoose';
+
+// const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = "mongodb+srv://bijaylife2001:bijay%40mongodb2025@cluster0.gty5vld.mongodb.net/test";
+
+
+async function dbConnect() {
+  if (mongoose.connection.readyState === 0) {
+    await mongoose.connect(MONGODB_URI);
+  }
+}
 
 export default async function DynamicPage({ params }) {
   const { slug } = await params;
-  const components = getPage(slug);
+  await dbConnect();
+  const components = await getPage(slug);
 
   if (!components) {
-    return (
-      <NotFound/>
-      // <div className="min-h-screen bg-gradient-to-br from-black via-zinc-700 to-zinc-400 flex items-center justify-center">
-      //   <div className="max-w-xl w-full mx-auto bg-white/80 backdrop-blur-lg rounded-2xl shadow-xl p-8 text-center">
-      //     <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-200 via-purple-200 to-pink-100 bg-clip-text text-transparent mb-4 drop-shadow-lg">
-      //       Page Not Found
-      //     </h1>
-      //     <p className="text-lg text-gray-700 mb-6">
-      //       Sorry, the page you requested does not exist.
-      //     </p>
-      //   </div>
-      // </div>
-    );
+    return <NotFound/>;
   }
 
   const componentMap = {
