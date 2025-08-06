@@ -6,11 +6,11 @@ A modern [Next.js](https://nextjs.org/) app that allows you to create brand-new 
 
 ## 🚀 Live Demo
 
-- **App:** [https://your-vercel-app-url.vercel.app](https://your-vercel-app-url.vercel.app)
-- **API Endpoint:** [https://your-vercel-app-url.vercel.app/api/pages](https://your-vercel-app-url.vercel.app/api/pages)
+- **App:** [https://bino-dynamic-pages.vercel.app](https://bino-dynamic-pages.vercel.app)
+- **API Endpoint:** [https://bino-dynamic-pages.vercel.app/api/pages](https://bino-dynamic-pages.vercel.app/api/pages)
 - **Example Pages:**
-  - [Example 1](https://your-vercel-app-url.vercel.app/example-1)
-  - [Example 2](https://your-vercel-app-url.vercel.app/example-2)
+  - [Example 1](https://bino-dynamic-pages.vercel.app/example-1)
+  - [Example 2](https://bino-dynamic-pages.vercel.app/example-2)
 
 ---
 
@@ -81,7 +81,7 @@ Content-Type: application/json
 ### **Sample cURL**
 
 ```bash
-curl -X POST https://your-vercel-app-url.vercel.app/api/pages \
+curl -X POST https://bino-dynamic-pages.vercel.app/api/pages \
   -H "Content-Type: application/json" \
   -d '{
     "slug": "my-new-page",
@@ -107,8 +107,8 @@ curl -X POST https://your-vercel-app-url.vercel.app/api/pages \
 
 ## 🖼️ Example Pages
 
-- [Example 1](https://your-vercel-app-url.vercel.app/example-1)
-- [Example 2](https://your-vercel-app-url.vercel.app/example-2)
+- [Example 1](https://bino-dynamic-pages.vercel.app/example-1)
+- [Example 2](https://bino-dynamic-pages.vercel.app/example-2)
 
 ---
 
@@ -171,4 +171,4 @@ MIT
 ---
 
 **Questions?**  
-Open an issue or contact [your-email@example.com].
+Open an issue or contact [bijaylife2001@gmail.com].
